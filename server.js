@@ -30,7 +30,7 @@ io.on('connection', socket => {
     socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
 
     // Broadcast when a user connects
-    socket.broadcast // to all users except the user just connects
+    socket.broadcast
       .to(user.room)
       .emit(
         'message',
@@ -62,7 +62,7 @@ io.on('connection', socket => {
       );
 
       // Send users and room info
-      io.to(user.room).emit('roomUsers' , {
+      io.to(user.room).emit('roomUsers', {
         room: user.room,
         users: getRoomUsers(user.room)
       });
